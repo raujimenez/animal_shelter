@@ -4,7 +4,7 @@ function OpenCon()
 {
     $dbhost = "localhost";
     $dbuser = "root";
-    $dbpass = ""; //change password to meet your requirements
+    $dbpass = "root"; //change password to meet your requirements
     $db = "animal";
     $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn->error);
 
