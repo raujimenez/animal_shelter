@@ -1,0 +1,7 @@
+'Saul', 'S', 'M', 'Green', 'small mammals', 1, '34', '7.8', '2010-11-24',  0, 1, "Saul is a deadly snake", "Rattle"
+'Kobe', 'S', 'M', 'Black', 'small mammals', 1, '3.5', '2.5', '2015-06-06', 0, 0, "Not the NBA player", "B. Mamba"
+'Monty', 'S', 'M', 'Green', 'small mammals', 1, '3.2', '6', '2016-10-23', 0, 0, "Creater of Python jk", "G. Python"
+'Sammy', 'S', 'F', 'Red/Orange', 'small mammals', 1, '2.6', '4.6', '2013-10-30', 1, 0, "Sammy won't do any harm", "C. Snake"
+'Sam', 'S', 'M', 'Red/Orange', 'small mammals', 1, '3.2', '5.2', '2015-01-22', 1, 0, "Sam won't do any harm", "C. Snake"
+'Sabrina', 'S', 'F', 'Red/Orange', 'small mammals', 1, '2.3', '4.2', '2018-01-22', 1, 0, "Freshly born and likes to bite!", "C. Snake"
+'Madonna', 'S', 'M', 'Yello', 'small mammals', 1, '1.2', '2.3', '2014-10-23', 1, 0, "Eyelashes with style", "E. Viper"
