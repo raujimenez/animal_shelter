@@ -1,0 +1,7 @@
+'Charlie','B','M','Black','Grain,Seeds,Fruit',1,8.2,24,2016-10-23,1,1,'','Black Australorp',13,1
+'Ricky','B','M','Gray/White','Nuts,Flowers,Seeds,Fruit,Insects',1,3.2,12,2013-2-17,1,1,'','Cockatiel Parrot',17,0
+'Benjy','B','M','Blue/White','Nuts,Flowers,Seeds,Fruit,Insects',1,1.4,7.1,2017-05-15,1,1,'','Budgerigar Parakeet',12,1
+'Kiwi','B','F','Green','Nuts,Flowers,Seeds,Fruit,Insects',1,3.5,,11,2012-02-13,1,1,'','Monk Parakeet',19.0,0
+'Daisy','B','F','White','Nuts,Flowers,Seeds,Fruit,Insects',1,1.2,18,2014-03-24,1,1,'','White Cockatoo',22.0,1
+'Rio','B','F','Green/Yellow/Red','Nuts,Flowers,Seeds,Fruit,Insects',1,9.2,14,2016-02-13,1,1,'','Eclectus Parrot',20,1
+'Pickles','B','F','White','Nuts,Flowers,Seeds,Fruit,Insects',1,1.3,18,2016-02-05,1,1,'','White Cockatoo',22.3,1

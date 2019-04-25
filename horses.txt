@@ -1,7 +1,0 @@
-'Serendipity','H','F','Bay','Grass,Hay,Oats/Wheat/Barley',1,503,48,2014-07-12,1,1,'','Welsh Pony',1,0
-'Kaslin','H','M','Chestnut/Sorrel','Grass,Hay,Oats/Wheat/Barley',1,510,49,2012-06-21,1,1,'','Welsh/Paint Pony',1,0
-'Regina','H','F','Grullo','Grass,Hay,Oats/Wheat/Barley',1,1117,61.2,2015-01-24,1,1,'','Quarter Horse',1,0
-'Ranger','H','M','Chestnut/Sorrel','Grass,Hay,Oats/Wheat/Barley',1,1024,59.3,2011-04-21,1,1,'','Quarter Horse',1,0
-'Merlot','H','F','Bay','Grass,Hay,Oats/Wheat/Barley',1,1004,61,2016-08-12,1,1,'','Arabian Horse',1,0
-'Rain','H','F','White','Grass,Hay,Oats/Wheat/Barley',1,1997,58,2014-11-29,1,1,'','Appaloosa Horse',1,0
-'Midnight','H','M','Black','Grass,Hay,Oats/Wheat/Baryley',1,2012,60,2010-07-01,'',Appaloosa Horse',1,0

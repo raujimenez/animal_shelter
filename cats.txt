@@ -1,7 +1,0 @@
-'Bella','C','F','Black/White Tuxedo','Dry Food',1,8.2,9.1,2015-03-12,1,1,'','Tuxedo/Short Hair',1,0
-'Leo','C','M','Orange/White','Dry food',1,8.7,9.6,2017-06-19,1,1,'Short Hair',1,0
-'Lucy','C','F','Gray/Blue/Silver','Dry Food',1,8.4,9.3,2014-02-16,1,1,'','Siamese/Tabby',0,0
-'Charlie','C','M','Black/White Tuxedo','Dry Food',1,8.3,9.4,2015-07-22,'','Short Hair',1,0
-'Finn','C','M','Brown/Chocolate','Dry Food',1,8.6.9.5,2011-04-20,1,1,'','ShortHair/Tabby',0,1
-'Nala','C','F','Tabby','Dry Food',1,8.5,9.2,2012-09-23,1,1,'','Short Hair',0,1
-'Oscar','C','M','Black','Dry Food',1,9.1,9.7,2010-01-10,1,1,'Burmese/ShortHair',0,0
