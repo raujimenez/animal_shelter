@@ -1,216 +1,182 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
-<!--
-	Telephasic by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>UTAnimals</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="homepage is-preload">
-		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div id="header" class="container">
+<head>
+	<title>UTAnimals</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
 
-						<!-- Logo -->
-							<h1 id="logo"><a href="index.php">UTAnimals</a></h1>
+<body class="homepage is-preload">
+	<div id="page-wrapper">
 
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li>
-										<a href="#">Find a Friend</a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Lorem ipsum dolor</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a href="left-sidebar.php">Profile</a></li>
-									<li class="break"><a href="right-sidebar.php">Inquiries</a></li>
-									<li><a href="no-sidebar.php">Contact Us</a></li>
-								</ul>
-							</nav>
+		<!-- Header -->
+		<div id="header-wrapper">
+			<div id="header" class="container">
 
-					</div>
+				<!-- Logo -->
+				<h1 id="logo"><a href="index.php">UTAnimals</a></h1>
 
-					<!-- Hero -->
-						<section id="hero" class="container">
-							<header>
-								<h2>Pets not Animals
-								<br />
-                                Find. Friends. Forever</a></h2>
-							</header>
-							<p>Designed and built by <a href="http://twitter.com/ajlkn">Raul and Michael</a> and created for 
-							<br />
-							<a href="http://heracleia.uta.edu/~sharifara/Spring_19_3330/index.html">CSE 3330: Databases</a>.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">Get this party started</a></li>
-							</ul>
-						</section>
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li>
+							<a href="find.php">Find a Friend</a>
+						</li>
+						<li><a href="profile.php"><?php
+							if($_SESSION['username'] == '')
+								echo "Profile";
+							else 
+								echo "Hi, " . $_SESSION['username']. "!";
+						?></a></li>
+						<li class="break"><a href="right-sidebar.php">Inquiries</a></li>
+						<li><a href="logout.php">Logout</a></li>
+					</ul>
+				</nav>
 
-				</div>
+			</div>
 
-			<!-- Features 1 -->
-				<div class="wrapper">
-					<div class="container">
-						<div class="row">
-							<section class="col-6 col-12-narrower feature">
-								<div class="image-wrapper first">
-									<a href="#" class="image featured first"><img src="images/pic01.jpg" alt="" /></a>
-								</div>
-								<header>
-									<h2>Semper magna neque vel<br />
-									adipiscing curabitur</h2>
-								</header>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel
-								sem sit dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et sed
-								adipiscing elit. Curabitur vel sem sit.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Elevate my awareness</a></li>
-								</ul>
-							</section>
-							<section class="col-6 col-12-narrower feature">
-								<div class="image-wrapper">
-									<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								</div>
-								<header>
-									<h2>Amet lorem ipsum dolor<br />
-									sit consequat magna</h2>
-								</header>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel
-								sem sit dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et sed
-								adipiscing elit. Curabitur vel sem sit.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Elevate my awareness</a></li>
-								</ul>
-							</section>
-						</div>
-					</div>
-				</div>
-
-			<!-- Promo -->
-				<div id="promo-wrapper">
-					<section id="promo">
-						<h2>Neque semper magna et lorem ipsum adipiscing</h2>
-						<a href="#" class="button">Breach the thresholds</a>
-					</section>
-				</div>
-
-			<!-- Features 2 -->
-				<div class="wrapper">
-					<section class="container">
-						<header class="major">
-							<h2>Sed magna consequat lorem curabitur tempus</h2>
-							<p>Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit</p>
-						</header>
-						<div class="row features">
-							<section class="col-4 col-12-narrower feature">
-								<div class="image-wrapper first">
-									<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								</div>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur
-								vel sem sit dolor neque semper magna lorem ipsum.</p>
-							</section>
-							<section class="col-4 col-12-narrower feature">
-								<div class="image-wrapper">
-									<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-								</div>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur
-								vel sem sit dolor neque semper magna lorem ipsum.</p>
-							</section>
-							<section class="col-4 col-12-narrower feature">
-								<div class="image-wrapper">
-									<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-								</div>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur
-								vel sem sit dolor neque semper magna lorem ipsum.</p>
-							</section>
-						</div>
-						<ul class="actions major">
-							<li><a href="#" class="button">Elevate my awareness</a></li>
-						</ul>
-					</section>
-				</div>
-
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<div id="footer" class="container">
-						<header class="major">
-							<h2>Euismod aliquam vehicula lorem</h2>
-							<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel sem sit<br />
-							dolor neque semper magna lorem ipsum feugiat veroeros lorem ipsum dolore.</p>
-						</header>
-						<div class="row">
-							<section class="col-6 col-12-narrower">
-								<form method="post" action="#">
-									<div class="row gtr-50">
-										<div class="col-6 col-12-mobile">
-											<input name="name" placeholder="Name" type="text" />
-										</div>
-										<div class="col-6 col-12-mobile">
-											<input name="email" placeholder="Email" type="text" />
-										</div>
-										<div class="col-12">
-											<textarea name="message" placeholder="Message"></textarea>
-										</div>
-										<div class="col-12">
-											<ul class="actions">
-												<li><input type="submit" value="Send Message" /></li>
-												<li><input type="reset" value="Clear form" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-							<section class="col-6 col-12-narrower">
-								<div class="row gtr-0">
-									<ul class="divided icons col-6 col-12-mobile">
-										<li class="icon fa-twitter"><a href="#"><span class="extra">twitter.com/</span>untitled</a></li>
-										<li class="icon fa-facebook"><a href="#"><span class="extra">facebook.com/</span>untitled</a></li>
-										<li class="icon fa-dribbble"><a href="#"><span class="extra">dribbble.com/</span>untitled</a></li>
-									</ul>
-									<ul class="divided icons col-6 col-12-mobile">
-										<li class="icon fa-instagram"><a href="#"><span class="extra">instagram.com/</span>untitled</a></li>
-										<li class="icon fa-youtube"><a href="#"><span class="extra">youtube.com/</span>untitled</a></li>
-										<li class="icon fa-pinterest"><a href="#"><span class="extra">pinterest.com/</span>untitled</a></li>
-									</ul>
-								</div>
-							</section>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="menu">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</div>
+			<!-- Hero -->
+			<section id="hero" class="container">
+				<header>
+					<h2>Pets not Animals
+						<br />
+						Find. Friends. Forever</a></h2>
+				</header>
+				<p>Designed and built by <a href="https://github.com/raujimenez/animal_shelter">Raul and Michael</a> and created for
+					<br />
+					<a href="http://heracleia.uta.edu/~sharifara/Spring_19_3330/index.html">CSE 3330: Databases</a>.</p>
+				<ul class="actions">
+					<li><a href="login.php" class="button">
+						<?php
+							if(!empty($_SESSION['username']))
+							{
+								echo "Welcome back, " . $_SESSION['username'];
+							}
+							else
+							{
+								echo "Get this party started";
+							}
+						?>
+					</a></li>
+				</ul>
+			</section>
 
 		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<!-- Features 1 -->
+		<div class="wrapper">
+			<div class="container">
+				<div class="row">
+					<section class="col-6 col-12-narrower feature">
+						<div class="image-wrapper first">
+							<a href="#" class="image featured first"><img src="images/family.jpg" alt="" /></a>
+						</div>
+						<header>
+							<h2>Great Friends.<br />
+								Perfect Family.</h2>
+						</header>
+						<p>Pets not only make for great companions. They make for great family. Having someone you can depend on is
+							The best feeling in the world. Let us help you find your friend that fits your lifestyle.
+						</p>
+						<ul class="actions">
+							<li><a href="#" class="button">Find your family</a></li>
+						</ul>
+					</section>
+					<section class="col-6 col-12-narrower feature">
+						<div class="image-wrapper">
+							<a href="#" class="image featured"><img src="images/question.jpg" alt="" /></a>
+						</div>
+						<header>
+							<h2>Need more info?<br />
+								Let us know!</h2>
+						</header>
+						<p>We believe in matching each person to their perfect pet. If you aren't sure or need more information to make an
+							informed decision let us know and we will help you to the best of our ability.
+						</p>
+						<ul class="actions">
+							<li><a href="#" class="button">Ask us</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
 
-	</body>
+		<!-- Promo -->
+		<div id="promo-wrapper">
+			<section id="promo">
+				<h2>Want to support your favorite friend in the shelter?</h2>
+				<a href="#" class="button">Donate</a>
+			</section>
+		</div>
+
+		<!-- Features 2 -->
+		<div class="wrapper">
+			<section class="container">
+				<header class="major">
+					<h2>Our furry friends are always looking for homes</h2>
+					<p></p>
+				</header>
+				<div class="row features">
+					<section class="col-4 col-12-narrower feature">
+						<div class="image-wrapper">
+							<a href="#" class="image featured"><img src="images/bird.jpg" alt="" /></a>
+						</div>
+						<header>
+							<h3>Busy Birds</h3>
+						</header>
+						<p>These birds are all over the place! They love to sing, fly, and play. While they build their nest will you let them stay in yours?</p>
+					</section>
+					<section class="col-4 col-12-narrower feature">
+                        <div class="image-wrapper first">
+                            <a href="#" class="image featured"><img src="images/dog.jpg" alt="" /></a>
+                        </div>
+                        <header>
+                            <h3>Doggy Mayhem</h3>
+                        </header>
+                        <p>These dogs know how to wrestle and play. Don't let their good behavior fool you! These are the most playful of dogs.</p>
+                    </section>
+					<section class="col-4 col-12-narrower feature">
+                        <div class="image-wrapper">
+                            <a href="#" class="image featured"><img src="images/cat.jpg" alt="" /></a>
+                        </div>
+                        <header>
+                            <h3>Kitty Kats</h3>
+                        </header>
+                        <p>Their ancestors were the kings of the jungle and they still think they are royalty. These cats are as pretigious as they come!</p>
+                        </ul>
+                    </section>
+				</div>
+				<ul class="actions major">
+					<li><a href="login.php" class="button">Login / Sign up</a></li>
+				</ul>
+			</section>
+		</div>
+
+		<!-- Footer -->
+		<div id="footer-wrapper">
+			<div id="footer" class="container">
+				<header class="major">
+					<h2>UTAnimals Cares about your friends</h2>
+					<p>We at UTAnimals value your our guest as much as our own family.<br> Please take care of our family members when adopting. </p>
+				</header>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
