@@ -8,25 +8,25 @@ if (empty($_SESSION['username'])) {
     header('Location: login.php');
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $ssn = $_POST['ssn'];
-        $username = $_SESSION['username'];
-        $password = $_SESSION['password'];
-        $sql = "SELECT PID FROM PROFILE WHERE Uname = '$username' AND P_Password = '$password';";
-        $new_result = $conn->query($sql);
-        $row = $new_result->fetch_assoc();
-        $pid = $row['PID'];
-        if ($_SESSION['p_type'] == 'u') {
-                //make user a admin
-                $conn->query("UPDATE PROFILE SET P_TYPE = 'a', Ssn = '$ssn' WHERE PID = '$pid';");
-                $_SESSION['ssn'] = $ssn;
-                $_SESSION['p_type'] = 'a';
-            } else if ($_SESSION['p_type'] == 'a') {
-                //make an admin a user
-                $conn->query("UPDATE PROFILE SET P_TYPE = 'u', Ssn = NULL WHERE PID = '$pid';");
-                $_SESSION['ssn'] = NULL;
-                $_SESSION['p_type'] = 'u';
-            }
+    $ssn = $_POST['ssn'];
+    $username = $_SESSION['username'];
+    $password = $_SESSION['password'];
+    $sql = "SELECT PID FROM PROFILE WHERE Uname = '$username' AND P_Password = '$password';";
+    $new_result = $conn->query($sql);
+    $row = $new_result->fetch_assoc();
+    $pid = $row['PID'];
+    if ($_SESSION['p_type'] == 'u') {
+        //make user a admin
+        $conn->query("UPDATE PROFILE SET P_TYPE = 'a', Ssn = '$ssn' WHERE PID = '$pid';");
+        $_SESSION['ssn'] = $ssn;
+        $_SESSION['p_type'] = 'a';
+    } else if ($_SESSION['p_type'] == 'a') {
+        //make an admin a user
+        $conn->query("UPDATE PROFILE SET P_TYPE = 'u', Ssn = NULL WHERE PID = '$pid';");
+        $_SESSION['ssn'] = NULL;
+        $_SESSION['p_type'] = 'u';
     }
+}
 $conn->close();
 ?>
 <!DOCTYPE HTML>
@@ -148,9 +148,10 @@ $conn->close();
 												<li><a href="remove.php" class="button">Remove a Pet</a></li>
 											</ul>
                                         </section>
+                                        
                                     ';
                             } else if ($_SESSION['p_type'] == 'u') {
-                                    echo '<section>
+                                echo '<section>
 											<a href="adopt.php" class="image featured"><img src="images/adopt.jpg" alt="" /></a>
 											<header>
 												<h3>Adopt a Pet</h3>
@@ -160,7 +161,7 @@ $conn->close();
 												<li><a href="adopt.php" class="button">Adopt</a></li>
 											</ul>
                                         </section>';
-                                }
+                            }
                             ?>
                         </section>
                         </section>
@@ -213,17 +214,17 @@ $conn->close();
                                     $get_adoptions_sql = "SELECT * FROM adoption where PID=$n_pid;";
                                     $adoption_aid_arr = $conn->query($get_adoptions_sql);
                                     while ($adoption_aid = $adoption_aid_arr->fetch_assoc()) {
-                                            $new_aid = $adoption_aid['AID'];
-                                            $names = $conn->query("SELECT * from animal where AID=$new_aid;");
-                                            $name = $names->fetch_assoc();
-                                            echo "<tr style=\"text-align:center;\"><td>" . $name['Name'] . "</td>";
-                                            echo "<td>" . $adoption_aid['adopt_date'] . "</td>";
-                                            echo "<td>" . "\$" . number_format($adoption_aid['fee'], 2) . "</td></tr>";
-                                        }
+                                        $new_aid = $adoption_aid['AID'];
+                                        $names = $conn->query("SELECT * from animal where AID=$new_aid;");
+                                        $name = $names->fetch_assoc();
+                                        echo "<tr style=\"text-align:center;\"><td>" . $name['Name'] . "</td>";
+                                        echo "<td>" . $adoption_aid['adopt_date'] . "</td>";
+                                        echo "<td>" . "\$" . number_format($adoption_aid['fee'], 2) . "</td></tr>";
+                                    }
                                     $conn->close();
                                     ?>
                                 </table>
-                            
+
                                 <table style="border:1px solid black;width:100%;">
                                     <tr style="border:1px solid black;">
                                         <th colspan="3">Donations</th>
@@ -233,23 +234,37 @@ $conn->close();
                                         <th colspan="1" style="border:1px solid black;">Date</th>
                                         <th colspan="1" style="border:1px solid black;">Amount</th>
                                     </tr>
-                                    <?php                         
+                                    <?php
                                     $conn = OpenCon();
                                     $new_pid = $_SESSION['pid'];
                                     $get_donations_sql = "SELECT * FROM donates_to where PID=$new_pid;";
                                     $donations_arr = $conn->query($get_donations_sql);
                                     while ($donation_aid = $donations_arr->fetch_assoc()) {
-                                            $n_aid = $donation_aid['AID'];
-                                            $names_d = $conn->query("SELECT * from animal where AID=$n_aid;");
-                                            $name_d = $names_d->fetch_assoc();
-                                            echo "<tr style=\"text-align:center;\"><td>" . $name_d['Name'] . "</td>";
-                                            echo "<td>" . $donation_aid['D_date'] . "</td>";
-                                            echo "<td>" . "\$" . number_format($donation_aid['Amount'], 2) . "</td></tr>";
-                                        }
+                                        $n_aid = $donation_aid['AID'];
+                                        $names_d = $conn->query("SELECT * from animal where AID=$n_aid;");
+                                        $name_d = $names_d->fetch_assoc();
+                                        echo "<tr style=\"text-align:center;\"><td>" . $name_d['Name'] . "</td>";
+                                        echo "<td>" . $donation_aid['D_date'] . "</td>";
+                                        echo "<td>" . "\$" . number_format($donation_aid['Amount'], 2) . "</td></tr>";
+                                    }
                                     $conn->close();
                                     ?>
                                 </table>
                             </p>
+                            <?php
+                            if ($_SESSION['p_type'] == 'a')
+                                echo '<section>        
+                                <a href="get_user_info.php" class="image featured"><img src="images/user.png" alt="" /></a>
+											<header>
+												<h3>Get info of a user</h3>
+											</header>
+                                            <p>Allows us to check the information about a unique user using their username. Know their username? give it a shot!</p>
+                                            
+											<ul class="actions" style="text-align:center; margin-left:auto;margin-right:auto">
+												<li><a href="get_user_info.php" class="button">Search</a></li>
+											</ul>
+                                </section>';
+                            ?>
                         </article>
                     </div>
                 </div>
