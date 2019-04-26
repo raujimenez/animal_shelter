@@ -153,14 +153,24 @@ $conn->close();
                             } else if ($_SESSION['p_type'] == 'u') {
                                 echo '<section>
 											<a href="adopt.php" class="image featured"><img src="images/adopt.jpg" alt="" /></a>
-											<header>
+											<header style="text-align:center;margin-left:auto;margin-right:auto">
 												<h3>Adopt a Pet</h3>
 											</header>
 											<p>If you are ready for this next step we will help you! </p>
-											<ul class="actions">
+											<ul class="actions" style="text-align:center;margin-left:auto;margin-right:auto">
 												<li><a href="adopt.php" class="button">Adopt</a></li>
 											</ul>
                                         </section>';
+                                echo '<section>
+                                <a href="adopt.php" class="image featured"><img src="images/donate.png" alt="" /></a>
+                                <header style="text-align:center;margin-left:auto;margin-right:auto">
+                                    <h3>Donate</h3>
+                                </header>
+                                <p>Want to help out but can\'t adopt? No problem! You can always donate to help out our furry family. </p>
+                                <ul class="actions" style="text-align:center;margin-left:auto;margin-right:auto">
+                                    <li><a href="donate.php" class="button">Donate</a></li>
+                                </ul>
+                            </section>';
                             }
                             ?>
                         </section>
@@ -252,7 +262,7 @@ $conn->close();
                                 </table>
                             </p>
                             <?php
-                            if ($_SESSION['p_type'] == 'a'){
+                            if ($_SESSION['p_type'] == 'a') {
                                 echo '<section>        
                                 <a href="get_user_info.php" class="image featured"><img src="images/user.png" alt="" /></a>
 											<header>
