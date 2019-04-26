@@ -1,16 +1,17 @@
 <?php
 session_start();
+if ($_SESSION['p_type'] != 'u')
+    header('Location: profile.php');
 include("src/initialization.php");
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aid = $_POST['aid'];
     $sql = "SELECT * from animal where AID='$aid'";
     $conn = OpenCon();
     $result = $conn->query($sql);
-    if($result->num_rows != 1) { }
-    else{
-        $_SESSION['curr_aid'] = $result->fetch_assoc();
-        header('Location: change_info.php');
+    if ($result->num_rows != 1) { } else {
+        $_SESSION['adopt_aid'] = $result->fetch_assoc();
+        $row = $result->fetch_assoc();
+        header('Location: animal_info.php');
     }
 }
 
@@ -66,16 +67,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <section class="col-6 col-12-narrower">
                     <form method="post" action="#">
                         <div class="row gtr-50">
-                        <div class="col-12" style="text-align:center; width:100%; ">
-                                <h3>Change information about a pet</h3>
+                            <div class="col-12" style="text-align:center; width:100%; ">
+                                <h3>Adopt a Friend</h3>
                                         <p>
-                                            Search for a friend with their AID and you can edit!
+                                            Search for a friend! Ensure their information is correct and then adopt!
                                         </p>
                             </div>
                             <div class="col-12" style="text-align:center; width:100%; ">
                                 <input name="aid" placeholder="Animal ID" type="text" maxlength="100" minlength="1" />
                             </div>
                             <div class="col-12">
+
                                 <ul class="actions" style="text-align:center;">
                                     <li><input type="Submit" value="Search" /></li>
                                     <li><a href="profile.php" class="button">Cancel</a></li>
@@ -86,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 </section>
 
                 <div class="row features">
-                    
+
                 </div>
             </div>
         </div>

@@ -121,7 +121,7 @@ $conn->close();
                                     </section>
                                     <?php
                                     //If admin is a user they should be able to add animals
-                                    if($_SESSION['p_type'] == 'a')
+                                    if($_SESSION['p_type'] == 'a'){
                                     echo '<section>
 											<a href="add.php" class="image featured"><img src="images/dolphin.jpg" alt="" /></a>
 											<header>
@@ -143,6 +143,20 @@ $conn->close();
 											</ul>
                                         </section>
                                     ';
+                                    }
+                                    else if($_SESSION['p_type'] == 'u')
+                                    {
+                                        echo '<section>
+											<a href="adopt.php" class="image featured"><img src="images/adopt.jpg" alt="" /></a>
+											<header>
+												<h3>Adopt a Pet</h3>
+											</header>
+											<p>If you are ready for this next step we will help you! </p>
+											<ul class="actions">
+												<li><a href="adopt.php" class="button">Adopt</a></li>
+											</ul>
+                                        </section>';
+                                    }
                                     ?>
                             </section>
                         </section>

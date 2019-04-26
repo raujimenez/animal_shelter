@@ -1,5 +1,7 @@
 <?php
 session_start();
+if($_SESSION['p_type'] != 'a')
+    header('Location: profile.php');
 include("src/initialization.php");
 $pet_info = $_SESSION['curr_aid'];
 $aid = $pet_info['AID'];
