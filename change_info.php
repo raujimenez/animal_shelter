@@ -1,12 +1,11 @@
 <?php
-    session_start();
-    include("src/initialization.php");
-    $pet_info = $_SESSION['curr_aid'];
-    $aid = $pet_info['AID'];
-    $a_type = $pet_info['A_TYPE'];
+session_start();
+include("src/initialization.php");
+$pet_info = $_SESSION['curr_aid'];
+$aid = $pet_info['AID'];
+$a_type = $pet_info['A_TYPE'];
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $color = $_POST['color'];
     $vac = $_POST['vac'];
@@ -31,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         case 'H':
             $is_ride = $_POST['att1'];
             $speed = $_POST['att2'];
-            $group_sql = "UPDATE horse SET isRide=$is_ride, Speed='$speed' WHERE AID=$aid;";           
+            $group_sql = "UPDATE horse SET isRide=$is_ride, Speed='$speed' WHERE AID=$aid;";
             break;
         case 'I':
             $is_poison = $_POST['att1'];
@@ -55,18 +54,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             break;
     }
     $conn = OpenCon();
-    if($conn->query($sql) == true)
-    {
-        if($conn->query($group_sql) == true){
+    if ($conn->query($sql) == true) {
+        if ($conn->query($group_sql) == true) {
             $conn->close();
             header('Location: update_pet.php');
-        }else{
+        } else {
             $conn->close();
-            header('Location: update_pet.php');        
+            header('Location: update_pet.php');
         }
-    }
-    else
-    {
+    } else {
         $conn->close();
         header('Location: update_pet.php');
     }
@@ -122,138 +118,201 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
                 <section class="col-6 col-12-narrower">
                     <header>
-                        <h1 style="text-align:center;">Change info of <?php echo $pet_info['Name']?></h1>
+                        <h1 style="text-align:center;">Change info of <?php echo $pet_info['Name'] ?></h1>
                     </header>
                     <form method="post" action="#">
                         <div class="row gtr-50">
                             <div class="col-12" style="text-align:center; width:40%; ">
-                                <input name="name" placeholder="Name" type="text" maxlength="100" minlength="1" value="<?php echo $pet_info['Name']; ?>"/>
+                                <input name="name" placeholder="Name" type="text" maxlength="100" minlength="1" value="<?php echo $pet_info['Name']; ?>" />
                             </div>
                             <div class="col-12" style="text-align:center; width:40%; ">
-                                <input name="color" placeholder="Color" type="text" maxlength="50" minlength="1" value="<?php echo $pet_info['Color']; ?>"/>
+                                <input name="color" placeholder="Color" type="text" maxlength="50" minlength="1" value="<?php echo $pet_info['Color']; ?>" />
                             </div>
                             <div class="col-12" style="text-align:center; width:20%; ">
                                 <select name="vac" value="<?php echo $pet_info['is_vac']; ?>">
-                                    <option value="1" <?php if($pet_info['is_vac'] == 1) echo 'selected="selected"';?>>Vaccinated</option>
-                                    <option value="0" <?php if($pet_info['is_vac'] == 0) echo 'selected="selected"';?>>Not Vaccinated</option>
+                                    <option value="1" <?php if ($pet_info['is_vac'] == 1) echo 'selected="selected"'; ?>>Vaccinated</option>
+                                    <option value="0" <?php if ($pet_info['is_vac'] == 0) echo 'selected="selected"'; ?>>Not Vaccinated</option>
                                 </select>
                             </div>
                             <div class="col-12" style="text-align:center; width:40%;">
-                                <input name="diet" placeholder="Diet" type="text" maxlength="200" minlength="1" value="<?php echo $pet_info['Diet']; ?>"/>
+                                <input name="diet" placeholder="Diet" type="text" maxlength="200" minlength="1" value="<?php echo $pet_info['Diet']; ?>" />
                             </div>
 
                             <div class="col-12" style="text-align:center; width:20%; ">
-                                <input name="weight" placeholder="Weight" type="number" min="0" step=".01" value="<?php echo $pet_info['Weight']; ?>"/>
+                                <input name="weight" placeholder="Weight" type="number" min="0" step=".01" value="<?php echo $pet_info['Weight']; ?>" />
                             </div>
                             <div class="col-12" style="text-align:center; width:20%; ">
-                                <input name="height" placeholder="Height" type="number" min="0" step=".01" value="<?php echo $pet_info['Height']; ?>"/>
+                                <input name="height" placeholder="Height" type="number" min="0" step=".01" value="<?php echo $pet_info['Height']; ?>" />
                             </div>
 
                             <div class="col-12" style="text-align:center; width:20%; ">
-                                <select name="kid_friendly" >
-                                    <option value="1"<?php if($pet_info['is_kid_friendly'] == 1) echo 'selected="selected"';?>>Kid Friendly</option>
-                                    <option value="0"<?php if($pet_info['is_kid_friendly'] == 0) echo 'selected="selected"';?>>not Kid Friendly</option>
+                                <select name="kid_friendly">
+                                    <option value="1" <?php if ($pet_info['is_kid_friendly'] == 1) echo 'selected="selected"'; ?>>Kid Friendly</option>
+                                    <option value="0" <?php if ($pet_info['is_kid_friendly'] == 0) echo 'selected="selected"'; ?>>not Kid Friendly</option>
                                 </select>
                             </div>
                             <div class="col-12" style="text-align:center; width:20%; ">
                                 <select name="avail">
-                                    <option value="1" <?php if($pet_info['Available'] == 1) echo 'selected="selected"';?>>Available</option>
-                                    <option value="0" <?php if($pet_info['Available'] == 0) echo 'selected="selected"';?>>Not Available</option>
+                                    <option value="1" <?php if ($pet_info['Available'] == 1) echo 'selected="selected"'; ?>>Available</option>
+                                    <option value="0" <?php if ($pet_info['Available'] == 0) echo 'selected="selected"'; ?>>Not Available</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <textarea name="description" placeholder="Description" maxlength="500"><?php echo $pet_info['Description'];?></textarea>
+                                <textarea name="description" placeholder="Description" maxlength="500"><?php echo $pet_info['Description']; ?></textarea>
                             </div>
                             <?php
                             $conn = OpenCon();
+
                             switch ($a_type) {
                                 case 'D':
+                                    $group_result = $conn . query("SELECT * FROM dog WHERE AID=$aid");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '                            <!-- Dog -->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1">Can reproduce</option>
-                                            <option value="0">Can not reproduce</option>
+                                            <option value="1".';
+                                    if ($group_row['canReproduce'] == 1) echo 'selected';
+                                    echo '>Can reproduce</option>
+                                            <option value="0". ';
+                                    if ($group_row['canReproduce'] == 0)  echo 'selected';
+                                    echo '>Can not reproduce</option>
                                         </select>
                                     </div>
                                     <!-- Dog end -->';
                                     break;
                                 case 'C':
+                                    $group_result = $conn->query("SELECT * FROM cat WHERE AID='$aid';");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '<!--Cat-->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1">Declawed</option>
-                                            <option value="0">Not Declawed</option>
+                                            <option value="1" ';
+                                    if ($group_row['isDeclaw'] == 1) echo 'selected';
+                                    echo '>Declawed</option>
+                                            <option value="0" ';
+                                    if ($group_row['isDeclaw'] == 0) echo 'selected';
+                                    echo '>Not Declawed</option>
                                         </select>
                                     </div>
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att2">
-                                            <option value="1">Can reproduce</option>
-                                            <option value="0">Can not reproduce</option>
+                                            <option value="1" ';
+                                    if ($group_row['canReproduce'] == 1) echo 'selected';
+                                    echo '>Can reproduce</option>
+                                            <option value="0" ';
+                                    if ($group_row['canReproduce'] == 0) echo 'selected';
+                                    echo '>Can not reproduce</option>
                                         </select>
                                     </div> ';
                                     break;
                                 case 'H':
+                                    $group_result = $conn->query("SELECT * FROM horse WHERE AID='$aid';");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '                            <!-- horse -->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1">Can Ride</option>
-                                            <option value="0">Can not Ride</option>
+                                            <option value="1" ';
+                                    if ($group_row['isRide'] == 1) echo 'selected';
+                                    echo '>Can Ride</option>
+                                            <option value="0" ';
+                                    if ($group_row['isRide'] == 0) echo 'selected';
+                                    echo '>Can not Ride</option>
                                         </select>
                                     </div>
                                     <div class="col-12" style="text-align:center; width:40%; ">
-                                        <input name="att2" placeholder="Speed" type="number" min="0" step="0.01" />
+                                        <input name="att2" placeholder="Speed" type="number" min="0" step="0.01" value="';
+                                    echo $group_row['Speed'];
+                                    echo '" />
                                     </div>';
                                     break;
                                 case 'I':
+                                    $group_result = $conn->query("SELECT * FROM insect WHERE AID='$aid';");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '                            <!--INSECT-->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1">Poisonous</option>
-                                            <option value="0">Not Poisonous</option>
+                                            <option value="1" ';
+                                    if ($group_row['is_Poison'] == 1) echo 'selected';
+                                    echo '>Poisonous</option>
+                                            <option value="0" ';
+                                    if ($group_row['is_Poison'] == 0) echo 'selected';
+                                    echo '>Not Poisonous</option>
                                         </select>
                                     </div>
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att2">
-                                            <option value="1">Has Wings</option>
-                                            <option value="0">No Wings</option>
+                                            <option value="1" ';
+                                    if ($group_row['has_Wings'] == 1) echo 'selected';
+                                    echo '>Has Wings</option>
+                                            <option value="0" ';
+                                    if ($group_row['has_Wings'] == 0) echo 'selected';
+                                    echo '>No Wings</option>
                                         </select>
                                     </div>';
                                     break;
                                 case 'F':
+                                    $group_result = $conn->query("SELECT * FROM fish WHERE AID='$aid';");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '<!--fish-->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="F">Freshwater</option>
-                                            <option value="S">Saltwater</option>
+                                            <option value="F" ';
+                                    if ($group_row['w_type'] == 'f' or $group_row['w_type'] == 'F')  echo 'selected';
+
+                                    echo '>Freshwater</option>
+                                            <option value="S" ';
+                                    if ($group_row['w_type'] == 's' or $group_row['w_type'] == 'S')  echo 'selected';
+                                    echo '>Saltwater</option>
                                         </select>
                                     </div>
                                     <div class="col-12" style="text-align:center; width:100%; ">
-                                        <input name="att2" placeholder="Tank Size" type="number" min="0" step="0.01" />
+                                        <input name="att2" placeholder="Tank Size" type="number" min="0" step="0.01" value="';
+                                    echo $group_row['Tanksize'];
+                                    echo '"/>
                                     </div>
                                     ';
                                     break;
                                 case 'S':
+                                    $group_result = $conn->query("SELECT * FROM snake WHERE AID='$aid';");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '<!--Snake -->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1">Poisonous</option>
-                                            <option value="0">Not Poisonous</option>
+                                            <option value="1" ';
+                                    if ($group_row['is_Poison'] == 1)  echo 'selected';
+                                    echo '>Poisonous</option>
+                                            <option value="0" ';
+                                    if ($group_row['is_Poison'] == 0)  echo 'selected';
+                                    echo '>Not Poisonous</option>
                                         </select>
                                     </div>
                                     <div class="col-12" style="text-align:center; width:100%; ">
-                                        <input name="att2" placeholder="Length" type="number" min="0" step="0.01" />
+                                        <input name="att2" placeholder="Length" type="number" min="0" step="0.01" value="';
+
+                                    echo $group_row['s_Length'];
+
+                                    echo '" />
                                     </div>';
+
                                     break;
                                 case 'B':
+                                    $group_result = $conn->query("SELECT * FROM bird WHERE AID='$aid';");
+                                    $group_row = $group_result->fetch_assoc();
                                     echo '<!--bird-->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1">Noisy</option>
-                                            <option value="0">Not Noisy</option>
+                                            <option value="1" ';
+                                    if ($group_row['isNoisy'] == 1)  echo 'selected';
+                                    echo '>Noisy</option>
+                                            <option value="0" ';
+                                    if ($group_row['isNoisy'] == 0)  echo 'selected';
+                                    echo '>Not Noisy</option>
                                         </select>
                                     </div>
                                     <div class="col-12" style="text-align:center; width:100%; ">
-                                        <input name="att2" placeholder="Wing span" type="number" min="0" step="0.01" />
+                                        <input name="att2" placeholder="Wing span" type="number" min="0" step="0.01" value="';
+                                    echo $group_row['w_span'];
+                                    echo '"/>
                                     </div>';
                                     break;
                                 default:
@@ -268,7 +327,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                     <li><a href="update_pet.php" class="button">Cancel</a></li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </form>
                 </section>
