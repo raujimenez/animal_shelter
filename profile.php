@@ -91,7 +91,6 @@ $conn->close();
                                 <header>
                                     <h3>Request Upgrade to Admin</h3>
                                 </header>
-                                    <p>
                                         <?php
                                             if($_SESSION['p_type'] == 'u')
                                                 echo "Want to upgrade your account to be an admin? Click the button and enter your SSN.";
@@ -107,6 +106,7 @@ $conn->close();
                                                          </div>';
                                                 ?>
                                                 <div class="col-12">
+                                                <a href="#." class="image featured"><img src="images/business.jpg" alt="" /></a>
                                                     <ul class="actions" style="text-align:center;">
                                                         <?php
                                                         if($_SESSION['p_type'] == 'u')
@@ -130,6 +130,16 @@ $conn->close();
 											<p>This is for admins only. If you are a user and seeing this you have encountered a bug. </p>
 											<ul class="actions">
 												<li><a href="add.php" class="button">Add Pet</a></li>
+											</ul>
+                                        </section>
+                                        <section>
+											<a href="update_pet.php" class="image featured"><img src="images/update.jpg" alt="" /></a>
+											<header>
+												<h3>Update a Pet Info</h3>
+											</header>
+											<p>This is for admins only. If you are a user and seeing this you have encountered a bug. </p>
+											<ul class="actions">
+												<li><a href="update_pet.php" class="button">Update a Pet</a></li>
 											</ul>
                                         </section>
                                     ';
