@@ -119,6 +119,21 @@ $conn->close();
                                                     <div style="color:red;">NOTE: YOU WILL NOT BE ABLE TO ADOPT, DONATE, OR LIKE ANIMALS IN THE FUTURE</div>
                                         </form>
                                     </section>
+                                    <?php
+                                    //If admin is a user they should be able to add animals
+                                    if($_SESSION['p_type'] == 'a')
+                                    echo '<section>
+											<a href="add.php" class="image featured"><img src="images/dolphin.jpg" alt="" /></a>
+											<header>
+												<h3>Add a Pet</h3>
+											</header>
+											<p>This is for admins only. If you are a user and seeing this you have encountered a bug. </p>
+											<ul class="actions">
+												<li><a href="add.php" class="button">Add Pet</a></li>
+											</ul>
+                                        </section>
+                                    ';
+                                    ?>
                             </section>
                         </section>
 

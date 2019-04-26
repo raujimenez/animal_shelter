@@ -1911,11 +1911,7 @@ input, select, textarea {
 		margin: 0 0 0.5em 0;
 	}
 
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"],
-	form select,
-	form textarea {
+	form input[type="text"], form input[type="number"], form input[type="date"], form input[type="email"], form input[type="password"], form select, form textarea {
 		-moz-transition: background-color 0.25s ease-in-out;
 		-webkit-transition: background-color 0.25s ease-in-out;
 		-ms-transition: background-color 0.25s ease-in-out;

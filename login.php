@@ -73,8 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Main -->
         <div class="wrapper">
             <div class="container" id="main">
-
+                
                 <section class="col-6 col-12-narrower">
+                    <header><h3 style="text-align:center;">Welcome<br/> Please login to use this wonderful system!</h3></header>
                     <form method="post" action="#">
                         <div class="row gtr-50">
                             <div class="col-12" style="text-align:center; width:50%; ">
