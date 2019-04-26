@@ -138,6 +138,16 @@ $conn->close();
 												<li><a href="update_pet.php" class="button">Update a Pet</a></li>
 											</ul>
                                         </section>
+                                        <section>
+											<a href="remove.php" class="image featured"><img src="images/sad_dog.jpg" alt="" /></a>
+											<header>
+												<h3>Remove a pet</h3>
+											</header>
+											<p>As sad as it may be sometimes we must say goodbye to family. :( </p>
+											<ul class="actions">
+												<li><a href="remove.php" class="button">Remove a Pet</a></li>
+											</ul>
+                                        </section>
                                     ';
                             } else if ($_SESSION['p_type'] == 'u') {
                                     echo '<section>

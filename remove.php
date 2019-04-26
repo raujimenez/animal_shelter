@@ -1,27 +1,22 @@
 <?php
 session_start();
-if($_SESSION['a_type'] != 'a')
+if ($_SESSION['p_type'] != 'a')
     header('Location: profile.php');
 
 include("src/initialization.php");
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $aid = $_POST['aid'];
-    $curr_pid = $_SESSION['pid'];
-    $sql = "SELECT * from animal where AID='$aid'";
-    $conn = OpenCon();
-    $result = $conn->query($sql);
-    if($result->num_rows != 1) { }
-    else{
-        $result_arr = $result->fetch_assoc();
-        $update_sql = "UPDATE animal SET Available=0, Removed_by=$curr_pid WHERE AID='$aid'";
-        if($conn->query($update_sql) == true)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $aid = $_POST['aid'];
+        $curr_pid = $_SESSION['pid'];
+        $sql = "SELECT * from animal where AID='$aid'";
+        $conn = OpenCon();
+        $result = $conn->query($sql);
+        if ($result->num_rows != 1) {
             header('Location: remove.php');
-        else 
-            header('Location: profile.php');
-        
+        } else {
+            $_SESSION['remove_aid'] = $result->fetch_assoc();
+            header('Location: remove_info.php');
         }
-}
+    }
 
 ?>
 
@@ -75,11 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <section class="col-6 col-12-narrower">
                     <form method="post" action="#">
                         <div class="row gtr-50">
-                        <div class="col-12" style="text-align:center; width:100%; ">
+                            <div class="col-12" style="text-align:center; width:100%; ">
                                 <h3>Removing a Pet</h3>
-                                        <p>
-                                            This will make the pet unavailable
-                                        </p>
+                                <p>
+                                    This will make the pet unavailable
+                                </p>
                             </div>
                             <div class="col-12" style="text-align:center; width:100%; ">
                                 <input name="aid" placeholder="Animal ID" type="text" maxlength="100" minlength="1" />
@@ -95,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 </section>
 
                 <div class="row features">
-                    
+
                 </div>
             </div>
         </div>
