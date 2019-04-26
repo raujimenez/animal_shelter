@@ -1,14 +1,123 @@
+<?php
+session_start();
+if($_SESSION['p_type'] != 'u' && $_SESSION['p_type'] != 'a')
+    header('Location: login.php');
+include("src/initialization.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $conditional = false;
+    $name         = "";
+    $vac          = "";
+    $breed        = "";
+    $color        = "";
+    $a_type       = "";
+    $sex          = "";
+    $kid_friendly = "";
+    $sql = "SELECT * from animal";
+    if(!empty($_POST['name']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $name = $_POST['name'];
+        $_SESSION['f_name'] = $name;
+        $sql .= " Name='" .$name . "' "; 
+    }
+    if(!empty($_POST['vac']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $vac = $_POST['vac'];
+        $_SESSION['f_vac'] = $vac;
+        $sql .= " is_vac=" . $vac . " "; 
+    }
+    if(!empty($_POST['breed']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $breed = $_POST['breed'];
+        $_SESSION['f_breed'] = $breed;
+        $sql .= " Breed='" .$breed . "' "; 
+    }
+    if(!empty($_POST['color']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $color = $_POST['color'];
+        $_SESSION['f_color'] = $color;
+        $sql .= " Color='" .$color . "' "; 
+    }
+    if(!empty($_POST['a_type']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $a_type = $_POST['a_type'];
+        $_SESSION['f_a_type'] = $a_type;
+        $sql .= " A_TYPE='" .$a_type . "' "; 
+    }
+    if(!empty($_POST['sex']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $sex = $_POST['sex'];
+        $_SESSION['f_sex'] = $sex;
+        $sql .= " Sex='" .$sex . "' "; 
+    }
+    if(!empty($_POST['kid_friendly']))
+    {
+        if($conditional == false)
+        {
+            $sql .= "WHERE ";
+            $conditional = true;
+        }
+        $kid_friendly = $_POST['kid_friendly'];
+        $_SESSION['f_kid_friendly'] = $kid_friendly;
+        $sql .= " is_kid_friendly=" .$kid_friendly . " "; 
+    }
+    $sql .= ";";
+    $conn = OpenCon();
+    $result = $conn->query($sql);
+    if ($result->num_rows < 0) { } else {
+        $_SESSION['f_name'] = $name;
+        $_SESSION['f_vac'] = $vac;
+        $_SESSION['f_breed'] = $breed;
+        $_SESSION['f_color'] = $color;
+        $_SESSION['f_a_type'] = $a_type;
+        $_SESSION['f_sex'] = $sex;
+        $_SESSION['f_kid_friendly'] = $kid_friendly;
+        header('Location: find_info.php');
+    }
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>Find Friends</title>
+    <title>Find Pets</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
-<body class="right-sidebar is-preload">
+<body class="no-sidebar is-preload">
     <div id="page-wrapper">
 
         <!-- Header -->
@@ -43,76 +152,67 @@
         <!-- Main -->
         <div class="wrapper">
             <div class="container" id="main">
-                <div class="row gtr-150">
-                    <div class="col-8 col-12-narrower">
 
-                        <!-- Content -->
-                        <article id="content">
-                            <header>
-                                <h2>Right Sidebar</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit
-                                    dolor neque semper magna lorem ipsum.</p>
-                            </header>
-                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-                            <p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien
-                                mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum
-                                condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus
-                                ante non est. Nullam vitae feugiat libero, eu consequat sem. Proin tincidunt neque
-                                eros. Duis faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et
-                                turpis vel blandit. Nullam ornare congue massa, at commodo nunc venenatis varius.
-                                Praesent mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac consectetur.</p>
-                            <p>Mauris eleifend eleifend felis aliquet ornare. Vestibulum porta velit at elementum
-                                gravida nibh eget, volutpat odio. Proin rhoncus, sapien
-                                mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum
-                                condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus
-                                ante non est. Nullam vitae feugiat libero, eu consequat sem. Proin tincidunt neque
-                                eros. Duis faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et
-                                turpis vel blandit. Nullam ornare congue massa, at commodo nunc venenatis varius.
-                                Praesent mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac consectetur.</p>
-                            <p>Vestibulum pellentesque posuere lorem non aliquam. Mauris eleifend eleifend
-                                felis aliquet ornare. Vestibulum porta velit at elementum elementum.</p>
-                            <p>Mauris eleifend eleifend felis aliquet ornare. Vestibulum porta velit at elementum
-                                gravida nibh eget, volutpat odio. Proin rhoncus, sapien
-                                mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum
-                                condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus
-                                ante non est. Nullam vitae feugiat libero, eu consequat sem. Proin tincidunt neque
-                                eros. Duis faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et
-                                turpis vel blandit. Nullam ornare congue massa, at commodo nunc venenatis varius.
-                                Praesent mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac consectetur.</p>
-                            <p>Vestibulum pellentesque posuere lorem non aliquam. Mauris eleifend eleifend
-                                felis aliquet ornare. Vestibulum porta velit at elementum elementum.</p>
-                        </article>
-
-                    </div>
-                    <div class="col-4 col-12-narrower">
-                        <!-- Sidebar -->
-                        <section id="sidebar">
-                            <section>
-                                <header>
-                                    <h3>Find your Friends</h3>
-                                </header>
-                                <p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur et vel
-                                    sem sit amet dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore
-                                    adipiscing elit. Curabitur vel sem sit.</p>
-                                <ul class="actions">
-                                    <li><a href="#" class="button">Magna amet nullam</a></li>
+                <!-- Content -->
+                <section class="col-6 col-12-narrower">
+                    <form method="post" action="#">
+                        <div class="row gtr-50">
+                            <div class="col-12" style="text-align:center; width:100%; ">
+                                <h3>Find a Friend</h3>
+                                        <p>
+                                            Search for a friend! This will display information about any animal that matches the description
+                                        </p>
+                            </div>
+                            <div class="col-12" style="text-align:center; width:40%; ">
+                                <input name="name" placeholder="Name" type="text" maxlength="100" minlength="1" />
+                            </div>
+                            <div class="col-12" style="text-align:center; width:20%; ">
+                                <select name="vac">
+                                    <option value="1">Vaccinated</option>
+                                    <option value="0">Not Vaccinated</option>
+                                </select>
+                            </div>
+                            <div class="col-12" style="text-align:center; width:40%; ">
+                                <input name="breed" placeholder="Breed" type="text" maxlength="20" minlength="1" />
+                            </div>
+                            <div class="col-12" style="text-align:center; width:40%; ">
+                                <input name="color" placeholder="Color" type="text" maxlength="50" minlength="1" />
+                            </div>
+                            <div class="col-12" style="text-align:center; width:20%; ">
+                                <select name="a_type">
+                                    <option value="D">Dog</option>
+                                    <option value="C">Cat</option>
+                                    <option value="H">Horse</option>
+                                    <option value="I">Insect</option>
+                                    <option value="F">Fish</option>
+                                    <option value="S">Snake</option>
+                                    <option value="B">Bird</option>
+                                </select>
+                            </div>
+                            <div class="col-12" style="text-align:center; width:20%; ">
+                                <select name="sex">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-12" style="text-align:center; width:20%; ">
+                                <select name="kid_friendly">
+                                    <option value="1">Kid Friendly</option>
+                                    <option value="0">not Kid Friendly</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions" style="text-align:center;">
+                                    <li><input type="Submit" value="Search" /></li>
+                                    <li><a href="profile.php" class="button">Cancel</a></li>
                                 </ul>
-                            </section>
-                            <section>
-                                <a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
-                                <header>
-                                    <h3>Commodo lorem varius</h3>
-                                </header>
-                                <p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur et vel
-                                    sem sit amet dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore
-                                    adipiscing elit. Curabitur vel sem sit.</p>
-                                <ul class="actions">
-                                    <li><a href="#" class="button">Ipsum sed dolor</a></li>
-                                </ul>
-                            </section>
-                        </section>
+                            </div>
+                        </div>
+                    </form>
+                </section>
 
-                    </div>
+                <div class="row features">
+
                 </div>
             </div>
         </div>
@@ -122,7 +222,7 @@
             <div id="footer" class="container">
                 <header class="major">
                     <h2>UTAnimals Cares about your friends</h2>
-                    <p>We at UTAnimals value your our guest as much as our own family.<br> Please take care of our family members when adopting. </p>
+                    <p>We at UTAnimals value our guest as much as our own family.<br> Please take care of our family members when adopting. </p>
                 </header>
             </div>
         </div>

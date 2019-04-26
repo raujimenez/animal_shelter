@@ -5,42 +5,19 @@ if ($_SESSION['p_type'] != 'u')
 include("src/initialization.php");
 $conn = OpenCon();
 $current_animal = $_SESSION['adopt_aid'];
-$a_type = $current_animal['A_TYPE'];
 $curr_aid = $current_animal['AID'];
-$new_row;
-switch ($a_type) {
-    case 'D':
-        $new_row = $conn->query("SELECT * FROM dog where AID='$curr_aid'");
-        break;
-    case 'C':
-        $new_row = $conn->query("SELECT * FROM cat where AID='$curr_aid'");
-        break;
-    case 'H':
-        $new_row = $conn->query("SELECT * FROM horse where AID='$curr_aid'");
-        break;
-    case 'I':
-        $new_row = $conn->query("SELECT * FROM insect where AID='$curr_aid'");
-        break;
-    case 'F':
-        $new_row = $conn->query("SELECT * FROM fish where AID='$curr_aid'");
-        break;
-    case 'S':
-        $new_row = $conn->query("SELECT * FROM snake where AID='$curr_aid'");
-        break;
-    case 'B':
-        $new_row = $conn->query("SELECT * FROM bird where AID='$curr_aid'");
-        break;
-}
-$extra_info = $new_row->fetch_assoc();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $curr_pid = $_SESSION['pid'];
+    $amount = $_POST["amount"];
     $aid = $current_animal['AID'];
-    $conn->query("UPDATE animal SET Available=0 where AID='$aid'");
-    $pid = $_SESSION['pid'];
-    $added_date = date("Y-m-d H:i:s");
-    $fee = 125.00;
-    if($conn->query("INSERT INTO adoption (AID, PID, adopt_date, fee) VALUES ('$aid', '$pid', '$added_date', '$fee');") == true)
+    $donation_date = date("Y-m-d H:i:s");
+    if ($conn->query("INSERT INTO donates_to (AID, PID, Amount, D_date) VALUES ($aid, $curr_pid, $amount, '$donation_date');") == true)
     {
         header('Location: profile.php');
+    }
+    else
+    {
+        header('Location: donate.php');
     }
 
 }
@@ -225,14 +202,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             echo '</table>';
                             ?>
-
+                            <div class="col-12" style="text-align:center; width:60%; margin-left:auto;margin-right:auto; ">
+                                <input name="amount" placeholder="Amount" type="number" step="0.01" min="0"/>
+                            </div>
                             <div class="col-12">
                                 <ul class="actions" style="text-align:center;">
                                     <?php
                                         if($current_animal['Available'] == 1)
-                                            echo '<li><input type="Submit" value="Adopt" /></li>';
+                                            echo '<li><input type="Submit" value="Donate" /></li>';
                                     ?>
-                                    <li><a href="adopt.php" class="button">Cancel</a></li>
+                                    <li><a href="donate.php" class="button">Cancel</a></li>
                                 </ul>
                             </div>
 

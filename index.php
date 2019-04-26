@@ -74,7 +74,7 @@ session_start();
 				<div class="row">
 					<section class="col-6 col-12-narrower feature">
 						<div class="image-wrapper first">
-							<a href="#" class="image featured first"><img src="images/family.jpg" alt="" /></a>
+							<a href="find.php" class="image featured first"><img src="images/family.jpg" alt="" /></a>
 						</div>
 						<header>
 							<h2>Great Friends.<br />
@@ -84,7 +84,7 @@ session_start();
 							The best feeling in the world. Let us help you find your friend that fits your lifestyle.
 						</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Find your family</a></li>
+							<li><a href="find.php" class="button">Find your family</a></li>
 						</ul>
 					</section>
 					<section class="col-6 col-12-narrower feature">
@@ -110,7 +110,7 @@ session_start();
 		<div id="promo-wrapper">
 			<section id="promo">
 				<h2>Want to support your favorite friend in the shelter?</h2>
-				<a href="#" class="button">Donate</a>
+				<a href="donate.php" class="button">Donate</a>
 			</section>
 		</div>
 
@@ -124,7 +124,7 @@ session_start();
 				<div class="row features">
 					<section class="col-4 col-12-narrower feature">
 						<div class="image-wrapper">
-							<a href="#" class="image featured"><img src="images/bird.jpg" alt="" /></a>
+							<a href="find.php" class="image featured"><img src="images/bird.jpg" alt="" /></a>
 						</div>
 						<header>
 							<h3>Busy Birds</h3>
@@ -133,7 +133,7 @@ session_start();
 					</section>
 					<section class="col-4 col-12-narrower feature">
                         <div class="image-wrapper first">
-                            <a href="#" class="image featured"><img src="images/dog.jpg" alt="" /></a>
+                            <a href="find.php" class="image featured"><img src="images/dog.jpg" alt="" /></a>
                         </div>
                         <header>
                             <h3>Doggy Mayhem</h3>
@@ -142,7 +142,7 @@ session_start();
                     </section>
 					<section class="col-4 col-12-narrower feature">
                         <div class="image-wrapper">
-                            <a href="#" class="image featured"><img src="images/cat.jpg" alt="" /></a>
+                            <a href="find.php" class="image featured"><img src="images/cat.jpg" alt="" /></a>
                         </div>
                         <header>
                             <h3>Kitty Kats</h3>

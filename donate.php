@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows != 1) { } else {
         $_SESSION['adopt_aid'] = $result->fetch_assoc();
         $row = $result->fetch_assoc();
-        header('Location: animal_info.php');
+        header('Location: donate_confirm.php');
     }
 }
 
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <title>Adopt Pet</title>
+    <title>Donate</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -68,9 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form method="post" action="#">
                         <div class="row gtr-50">
                             <div class="col-12" style="text-align:center; width:100%; ">
-                                <h3>Adopt a Friend</h3>
+                                <h3>Donate</h3>
                                         <p>
-                                            Search for a friend! Ensure their information is correct and then adopt!
+                                            Search for a specific friend, then donate.
                                         </p>
                             </div>
                             <div class="col-12" style="text-align:center; width:100%; ">

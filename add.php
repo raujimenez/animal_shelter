@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $breed = $_POST["breed"];
     $sql = "INSERT INTO animal (Added_by, Name, A_TYPE, Sex, Color, Diet, Available, Weight, Height, DoB, is_kid_friendly, is_vac, Description, A_date, breed) VALUES 
     ('$admin_id','$name', '$a_type', '$sex', '$color', '$diet', $is_available, '$weight', '$height', '$dob', $is_kid_friendly, $is_vac, '$description', '$added_date', '$breed');";
-    $_SESSION['fname'] = $sql;
     if ($conn->query($sql) == true) {
         $new_sql = "SELECT AID FROM ANIMAL WHERE Name='$name' and DoB='$dob';";
         $result = $conn->query($new_sql);
