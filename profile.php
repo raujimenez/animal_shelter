@@ -252,7 +252,7 @@ $conn->close();
                                 </table>
                             </p>
                             <?php
-                            if ($_SESSION['p_type'] == 'a')
+                            if ($_SESSION['p_type'] == 'a'){
                                 echo '<section>        
                                 <a href="get_user_info.php" class="image featured"><img src="images/user.png" alt="" /></a>
 											<header>
@@ -264,6 +264,18 @@ $conn->close();
 												<li><a href="get_user_info.php" class="button">Search</a></li>
 											</ul>
                                 </section>';
+                                echo '<section>        
+                                <a href="get_donation_info.php" class="image featured"><img src="images/time.jpg" alt="" /></a>
+											<header>
+												<h3>Get info of donations for a specific day</h3>
+											</header>
+                                            <p>Want to know how the checking book stands on a particular date? Click here to find out.</p>
+                                            
+											<ul class="actions" style="text-align:center; margin-left:auto;margin-right:auto">
+												<li><a href="get_donation_info.php" class="button">Search</a></li>
+											</ul>
+                                </section>';
+                            }
                             ?>
                         </article>
                     </div>
