@@ -1,10 +1,10 @@
 <?php
 session_start();
 if ($_SESSION['p_type'] != 'u')
-    header('Location: profile.php');
+    header('Location: inquiry_admin.php');
 include("src/initialization.php");
 $conn = OpenCon();
-$current_animal = $_SESSION['adopt_aid'];
+$current_animal = $_SESSION['inquiry_aid'];
 $a_type = $current_animal['A_TYPE'];
 $curr_aid = $current_animal['AID'];
 $new_row;
@@ -34,13 +34,24 @@ switch ($a_type) {
 $extra_info = $new_row->fetch_assoc();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aid = $current_animal['AID'];
-    $conn->query("UPDATE animal SET Available=0 where AID='$aid'");
     $pid = $_SESSION['pid'];
+    $amount = $_POST['amount'];
+    $question = $_POST['u_q'];
     $added_date = date("Y-m-d H:i:s");
-    $fee = 125.00;
-    if ($conn->query("INSERT INTO adoption (AID, PID, adopt_date, fee) VALUES ('$aid', '$pid', '$added_date', '$fee');") == true) {
-        header('Location: profile.php');
+    $_SESSION['fname'] ="INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');";
+    if(!empty($question)){
+        if ($conn->query("INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');") == true) {
+            
+        }
     }
+    if(!empty($amount))
+    {
+        if ($conn->query("INSERT INTO donates_to (AID, PID, Amount, D_date) VALUES ('$aid', '$pid', '$amount', '$added_date');") == true) 
+        {
+
+        }
+    }
+    header('Location: inquiry.php');
 }
 ?>
 
@@ -223,14 +234,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             echo '</table>';
                             ?>
-
+                            <div class="col-12" style="text-align:center; width:60%; margin-left:auto;margin-right:auto; ">
+                                <input name="amount" placeholder="Amount" type="number" step="0.01" min=".01"/>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="u_q" placeholder="Ask your Question!" maxlength="500"></textarea>
+                            </div>
                             <div class="col-12">
                                 <ul class="actions" style="text-align:center;">
                                     <?php
                                     if ($current_animal['Available'] == 1)
-                                        echo '<li><input type="Submit" value="Adopt" /></li>';
+                                        echo '<li><input type="Submit" value="Continue" /></li>';
                                     ?>
-                                    <li><a href="adopt.php" class="button">Cancel</a></li>
+                                    <li><a href="inquiry.php" class="button">Cancel</a></li>
                                 </ul>
                             </div>
 
