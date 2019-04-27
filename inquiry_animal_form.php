@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $amount = $_POST['amount'];
         $question = $_POST['u_q'];
         $added_date = date("Y-m-d H:i:s");
-        $_SESSION['fname'] = "INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');";
         if (!empty($question)) {
             if ($conn->query("INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');") == true) { }
         }
