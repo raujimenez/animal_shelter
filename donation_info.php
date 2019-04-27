@@ -53,7 +53,7 @@ include("src/initialization.php");
                 <section class="col-6 col-12-narrower">
                     <div style="text-align:center;margin-left:auto;margin-right:auto;">
                         <h3>
-                            Here is the information for <?php echo $uname; ?>
+                            Here you go
                             <h3>
                     </div>
                 </section>

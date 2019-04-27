@@ -1,17 +1,24 @@
 <?php
 session_start();
+if ($_SESSION['p_type'] != 'u' && $_SESSION['p_type'] != 'a')
+    header('Location: login.php');
 if ($_SESSION['p_type'] != 'a')
-    header('Location: profile.php');
+    header('Location: inquiry_admin.php');
 include("src/initialization.php");
+$conn = OpenCon();
+$inquiry_row = $_SESSION['inquiry_answer'];
+$aid = $inquiry_row['AID'];
+$user_pid = $inquiry_row['U_PID'];
+$pid = $_SESSION['pid'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $b_date = date("Y-m-d H:i:s", strtotime($_POST["date"]));
-    $temp_date = new DateTime($b_date);
-    $temp_date->format("Y-m-d H:i:s");
-    $temp_date->modify('+1 day');
-    $e_date = date("Y-m-d H:i:s", strtotime($temp_date->format("Y-m-d H:i:s")));
-    $_SESSION['b_date'] = $b_date;
-    $_SESSION['e_date'] = $e_date;
-    header('Location: donation_info.php');
+    $answer = $_POST['a_ans'];
+    $i_id = $inquiry_row['Inquiry_id'];
+    $added_date = date("Y-m-d H:i:s");
+    if (!empty($answer)) {
+            $conn->query("INSERT INTO answers VALUES ('$pid','$added_date', '$answer');");
+            $conn->query("UPDATE inquiry SET A_PID='$pid', a_date='$added_date' WHERE Inquiry_id='$i_id';");
+            header('Location: profile.php');
+        }
 }
 
 ?>
@@ -20,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <title>Date Search</title>
+    <title>Admin Answer</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -67,13 +74,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form method="post" action="#">
                         <div class="row gtr-50">
                             <div class="col-12" style="text-align:center; width:100%; ">
-                                <h3>Date Information</h3>
-                                        <p>
-                                            Enter a specific date and we will display it.
-                                        </p>
+                                <h3>
+                                    <?php
+                                    $result_user = $conn->query("SELECT * from profile where PID='$user_pid';");
+                                    $result_u = $result_user->fetch_assoc();
+                                    echo $result_u['Uname'] . "'s" . " inquiry about ";
+                                    $result_animal = $conn->query("SELECT * from animal where AID='$aid';");
+                                    $result_a = $result_animal->fetch_assoc();
+                                    echo $result_a['Name'] . ": ";
+                                    ?>
+                                </h3>
+                                <p>
+                                    "
+                                    <?php
+                                    $question = $inquiry_row['u_q'];
+                                    echo $question;
+                                    ?>
+                                    "
+                                </p>
                             </div>
-                            <div class="col-12" style="text-align:center; width:100%; ">
-                                <input name="date" type="date"/>
+                            <div class="col-12">
+                                <textarea name="a_ans" placeholder="Answer Question" maxlength="500"></textarea>
                             </div>
                             <div class="col-12">
 

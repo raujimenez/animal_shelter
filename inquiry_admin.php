@@ -2,9 +2,8 @@
 session_start();
 if ($_SESSION['p_type'] != 'u' && $_SESSION['p_type'] != 'a')
     header('Location: login.php');
-
-if ($_SESSION['p_type'] != 'u')
-    header('Location: inquiry_admin.php');
+if ($_SESSION['p_type'] != 'a')
+    header('Location: profile.php');
 include("src/initialization.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aid = $_POST['aid'];
@@ -12,9 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = OpenCon();
     $result = $conn->query($sql);
     if ($result->num_rows != 1) { } else {
-        $_SESSION['inquiry_aid'] = $result->fetch_assoc();
+        $_SESSION['inquiry_admin_aid'] = $result->fetch_assoc();
         $row = $result->fetch_assoc();
-        header('Location: inquiry_animal_form.php');
+        header('Location: inquiry_animal_admin_form.php');
     }
 }
 
@@ -71,16 +70,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form method="post" action="#">
                         <div class="row gtr-50">
                             <div class="col-12" style="text-align:center; width:100%; ">
-                                <h3>Ask us a Question!</h3>
+                                <h3>Discover and Answer</h3>
                                 <p>
-                                    To ask a question about an animal, please input the animal id.
+                                    Enter the Animal ID and we will show you all open queries.
                                 </p>
                             </div>
                             <div class="col-12" style="text-align:center; width:100%; ">
                                 <input name="aid" placeholder="Animal ID" type="text" maxlength="100" minlength="1" />
                             </div>
                             <div class="col-12">
-
                                 <ul class="actions" style="text-align:center;">
                                     <li><input type="Submit" value="Search" /></li>
                                     <li><a href="profile.php" class="button">Cancel</a></li>
@@ -89,38 +87,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="col-12">
                                 <table style="border:1px solid black;width:100%;">
                                     <tr style="border:1px solid black;">
-                                        <th colspan="3"> Questions
+                                        <th colspan="4"> Responses
                                         </th>
                                     </tr>
                                     <tr>
+                                        <th colspan="1" style="border:1px solid black;">Username</th>
                                         <th colspan="1" style="border:1px solid black;">Pet Name</th>
                                         <th colspan="1" style="border:1px solid black;">User Question</th>
                                         <th colspan="1" style="border:1px solid black;">Response</th>
                                     </tr>
                                     <?php
                                     $conn = OpenCon();
-                                    $u_pid = $_SESSION['pid'];
-                                    $get_donation_sql = "SELECT * FROM inquiry where U_PID='$u_pid';";
+                                    $a_pid = $_SESSION['pid'];
+                                    $get_donation_sql = "SELECT * FROM inquiry where A_PID='$a_pid';";
                                     $donation_aid_arr = $conn->query($get_donation_sql);
                                     while ($donation_aid = $donation_aid_arr->fetch_assoc()) {
-                                        echo "<tr style=\"text-align:center;\">";
                                         $aid = $donation_aid['AID'];
+                                        $u_pid = $donation_aid['U_PID'];
+                                        echo "<tr style=\"text-align:center;\">";
+                                        $result_user = $conn->query("SELECT * from profile where PID='$u_pid';");
+                                        $result_u = $result_user->fetch_assoc();
+                                        echo "<td>" . $result_u['Uname'] . "</td>";
                                         $result_aid = $conn->query("SELECT * from animal where AID='$aid';");
                                         $result_a = $result_aid->fetch_assoc();
                                         echo "<td>" . $result_a['Name'] . "</td>";
                                         echo "<td>" . $donation_aid['u_q'] . "</td>";
-                                        if($donation_aid['A_PID'] != NULL)
-                                        {
-                                            $a_pid = $donation_aid['A_PID'];
-                                            $a_date = $donation_aid['a_date'];
-                                            $result_response = $conn->query("SELECT * from answers where admin_id='$a_pid' and a_date='$a_date';");
-                                            $result_r = $result_response->fetch_assoc();
-                                            echo "<td>" . $result_r['a_ans'] . "</td>";
-                                        }
-                                        else
-                                        {                                   
-                                            echo "<td style='color:red;'> NO ANSWER YET</td>";
-                                        }
+                                        $admin_date = $donation_aid['a_date'];
+                                        $result_response = $conn->query("SELECT * from answers where a_date='$admin_date' and admin_id='$a_pid';");
+                                        $result_r = $result_response->fetch_assoc();
+                                        echo "<td>" . $result_r['a_ans'] . "</td>";
                                         echo "</tr>";
                                     }
                                     $conn->close();
