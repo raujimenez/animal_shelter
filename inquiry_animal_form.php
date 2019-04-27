@@ -34,24 +34,20 @@ switch ($a_type) {
 $extra_info = $new_row->fetch_assoc();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aid = $current_animal['AID'];
-    $pid = $_SESSION['pid'];
-    $amount = $_POST['amount'];
-    $question = $_POST['u_q'];
-    $added_date = date("Y-m-d H:i:s");
-    $_SESSION['fname'] ="INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');";
-    if(!empty($question)){
-        if ($conn->query("INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');") == true) {
-            
+    if ($current_animal['Available'] == 1) {
+        $pid = $_SESSION['pid'];
+        $amount = $_POST['amount'];
+        $question = $_POST['u_q'];
+        $added_date = date("Y-m-d H:i:s");
+        $_SESSION['fname'] = "INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');";
+        if (!empty($question)) {
+            if ($conn->query("INSERT INTO inquiry (u_q, U_PID, AID, u_date) VALUES ('$question', '$pid', '$aid', '$added_date');") == true) { }
         }
+        if (!empty($amount)) {
+                if ($conn->query("INSERT INTO donates_to (AID, PID, Amount, D_date) VALUES ('$aid', '$pid', '$amount', '$added_date');") == true) { }
+            }
+        header('Location: inquiry.php');
     }
-    if(!empty($amount))
-    {
-        if ($conn->query("INSERT INTO donates_to (AID, PID, Amount, D_date) VALUES ('$aid', '$pid', '$amount', '$added_date');") == true) 
-        {
-
-        }
-    }
-    header('Location: inquiry.php');
 }
 ?>
 
@@ -235,7 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             echo '</table>';
                             ?>
                             <div class="col-12" style="text-align:center; width:60%; margin-left:auto;margin-right:auto; ">
-                                <input name="amount" placeholder="Amount" type="number" step="0.01" min=".01"/>
+                                <input name="amount" placeholder="Amount" type="number" step="0.01" min=".01" />
                             </div>
                             <div class="col-12">
                                 <textarea name="u_q" placeholder="Ask your Question!" maxlength="500"></textarea>
