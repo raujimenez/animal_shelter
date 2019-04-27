@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="col-12">
 
                                 <ul class="actions" style="text-align:center;">
-                                    <li><input type="Submit" value="Search" /></li>
+                                    <li><input type="Submit" value="Respond" /></li>
                                     <li><a href="profile.php" class="button">Cancel</a></li>
                                 </ul>
                             </div>

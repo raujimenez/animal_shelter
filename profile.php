@@ -162,7 +162,7 @@ $conn->close();
 											</ul>
                                         </section>';
                                 echo '<section>
-                                <a href="adopt.php" class="image featured"><img src="images/donate.png" alt="" /></a>
+                                <a href="donate.php" class="image featured"><img src="images/donate.png" alt="" /></a>
                                 <header style="text-align:center;margin-left:auto;margin-right:auto">
                                     <h3>Donate</h3>
                                 </header>
