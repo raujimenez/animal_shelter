@@ -33,7 +33,7 @@ session_start();
 							else 
 								echo "Hi, " . $_SESSION['username']. "!";
 						?></a></li>
-						<li class="break"><a href="right-sidebar.php">Inquiries</a></li>
+						<li class="break"><a href="inquiry.php">Inquiries</a></li>
 						<li><a href="logout.php">Logout</a></li>
 					</ul>
 				</nav>
