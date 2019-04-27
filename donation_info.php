@@ -64,7 +64,7 @@ include("src/initialization.php");
                                 <tr style="border:1px solid black;">
                                     <th colspan="4">Donations from
                                         <?php
-                                            echo '( ' . $_SESSION['b_date'] . ' ) to '.'( ' . $_SESSION['e_date'] . ' ) ' ;
+                                        echo '( ' . $_SESSION['b_date'] . ' ) to ' . '( ' . $_SESSION['e_date'] . ' ) ';
                                         ?>
                                     </th>
                                 </tr>
@@ -88,15 +88,15 @@ include("src/initialization.php");
                                     $u_name = $u_names->fetch_assoc();
                                     $a_name = $a_names->fetch_assoc();
                                     echo "<tr style=\"text-align:center;\"><td>" . $a_name['Name'] . "</td>";
-                                    echo "<td>" . $u_name['Fname'] . " " . $u_name['Minit']. ". " . $u_name['Lname']. "</td>";
-                                    echo "<td>" . $donation_aid['D_date']. "</td>";
+                                    echo "<td>" . $u_name['Fname'] . " " . $u_name['Minit'] . ". " . $u_name['Lname'] . "</td>";
+                                    echo "<td>" . $donation_aid['D_date'] . "</td>";
                                     echo "<td>" . "\$" . number_format($donation_aid['Amount'], 2) . "</td></tr>";
                                 }
                                 $conn->close();
                                 ?>
                             </table>
                             <br />
-                                                        <div class="col-12">
+                            <div class="col-12">
                                 <ul class="actions" style="text-align:center;">
                                     <li><a href="get_donation_info.php" class="button">Search again</a></li>
                                 </ul>
