@@ -167,15 +167,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             switch ($a_type) {
                                 case 'D':
-                                    $group_result = $conn . query("SELECT * FROM dog WHERE AID=$aid");
+                                    $group_result = $conn->query("SELECT * FROM dog WHERE AID='$aid'");
                                     $group_row = $group_result->fetch_assoc();
                                     echo '                            <!-- Dog -->
                                     <div class="col-12" style="text-align:center; width:100%; ">
                                         <select name="att1">
-                                            <option value="1".';
+                                            <option value="1" ';
                                     if ($group_row['canReproduce'] == 1) echo 'selected';
-                                    echo '>Can reproduce</option>
-                                            <option value="0". ';
+                                    echo '>Can reproduce</option> <option value="0" ';
                                     if ($group_row['canReproduce'] == 0)  echo 'selected';
                                     echo '>Can not reproduce</option>
                                         </select>

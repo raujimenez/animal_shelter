@@ -7,19 +7,20 @@ $conn = OpenCon();
 $current_animal = $_SESSION['adopt_aid'];
 $curr_aid = $current_animal['AID'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $curr_pid = $_SESSION['pid'];
-    $amount = $_POST["amount"];
-    $aid = $current_animal['AID'];
-    $donation_date = date("Y-m-d H:i:s");
-    if ($conn->query("INSERT INTO donates_to (AID, PID, Amount, D_date) VALUES ($aid, $curr_pid, $amount, '$donation_date');") == true)
-    {
-        header('Location: profile.php');
+    if($current_animal['Available'] == 1){
+        $curr_pid = $_SESSION['pid'];
+        $amount = $_POST["amount"];
+        $aid = $current_animal['AID'];
+        $donation_date = date("Y-m-d H:i:s");
+        if ($conn->query("INSERT INTO donates_to (AID, PID, Amount, D_date) VALUES ($aid, $curr_pid, $amount, '$donation_date');") == true)
+        {
+            header('Location: profile.php');
+        }
+        else
+        {
+            header('Location: donate.php');
+        }
     }
-    else
-    {
-        header('Location: donate.php');
-    }
-
 }
 ?>
 

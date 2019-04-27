@@ -89,7 +89,7 @@ session_start();
 					</section>
 					<section class="col-6 col-12-narrower feature">
 						<div class="image-wrapper">
-							<a href="#" class="image featured"><img src="images/question.jpg" alt="" /></a>
+							<a href="inquiry.php" class="image featured"><img src="images/question.jpg" alt="" /></a>
 						</div>
 						<header>
 							<h2>Need more info?<br />
@@ -99,7 +99,7 @@ session_start();
 							informed decision let us know and we will help you to the best of our ability.
 						</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Ask us</a></li>
+							<li><a href="inquiry.php" class="button">Ask us</a></li>
 						</ul>
 					</section>
 				</div>
