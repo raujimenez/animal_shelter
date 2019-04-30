@@ -163,6 +163,39 @@ INSERT INTO inquiry (U_PID, AID, u_date, u_q) VALUES
 (20, 14, '2019-02-14', 'Will this make a good valentines gift?'),
 (20, 15, '2019-02-14', 'Will this make a good valentines gift?');
 
+INSERT INTO answers VALUES
+(45, "2019-04-27 03:13:28", "yes this cat is a rescue!"),
+(50, "2019-04-28 04:25:45", "Pets are not objects please treat them with respect"),
+(50, "2019-04-29 10:30:02", "He is the best boy!"),
+(45, "2019-04-28 04:25:45", "This shark was raised in a sanctuary, wild sharks are dangerous?"),
+(50, "2019-04-27 09:20:15", "You can take him anywhere he is a family member!");
+
+UPDATE inquiry 
+SET A_PID=45, a_date="2019-04-27 03:13:28"
+WHERE Inquiry_id=1;
+UPDATE inquiry 
+SET A_PID=50, a_date="2019-04-28 04:25:45"
+WHERE Inquiry_id=9;
+UPDATE inquiry 
+SET A_PID=50, a_date="2019-04-29 10:30:02"
+WHERE Inquiry_id=7;
+UPDATE inquiry 
+SET A_PID=45, a_date="2019-04-28 04:25:45"
+WHERE Inquiry_id=4;
+UPDATE inquiry 
+SET A_PID=50, a_date="2019-04-27 09:20:15"
+WHERE Inquiry_id=6;
+
+INSERT INTO likes VALUES
+(1,1),
+(2,1),
+(1,2),
+(1,3),
+(2,2),
+(3,1),
+(3,2),
+(1, 19);
+
 INSERT INTO ADOPTION VALUES
 (1,1,'2019-02-14', 125.00),
 (2,2,'2019-03-14', 25.00),

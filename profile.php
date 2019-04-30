@@ -260,7 +260,28 @@ $conn->close();
                                     $conn->close();
                                     ?>
                                 </table>
-                            </p>
+                                <table style="border:1px solid black;width:100%;">
+                                    <tr style="border:1px solid black;">
+                                        <th colspan="1">Likes</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1" style="border:1px solid black;">Name</th>
+                                    </tr>
+                                    <?php
+                                    $conn = OpenCon();
+                                    $n_pid = $_SESSION['pid'];
+                                    $get_likes_sql = "SELECT * FROM likes where PID=$n_pid;";
+                                    $likes_arr = $conn->query($get_likes_sql);
+                                    while ($likes_aid = $likes_arr->fetch_assoc()) {
+                                        $new_aid = $likes_aid['AID'];
+                                        $names = $conn->query("SELECT * from animal where AID=$new_aid;");
+                                        $name = $names->fetch_assoc();
+                                        echo "<tr style=\"text-align:center;\"><td>" . $name['Name'] . "</td>";
+                                    }
+                                    $conn->close();
+                                    ?>
+                                </table>
+                            </p>                      
                             <?php
                             if ($_SESSION['p_type'] == 'a') {
                                 echo '<section>        
@@ -283,6 +304,19 @@ $conn->close();
                                             
 											<ul class="actions" style="text-align:center; margin-left:auto;margin-right:auto">
 												<li><a href="get_donation_info.php" class="button">Search</a></li>
+											</ul>
+                                </section>';
+                            }
+                            if($_SESSION['p_type'] == 'u')
+                            {
+                                echo '<section>        
+                                <a href="likes.php" class="image featured"><img src="images/likes.jpg" alt="" /></a>
+											<header>
+												<h3>Like an animal</h3>
+											</header>
+                                            <p>Love an animal and want to show your appreciation? Know their animal id? Give em a like!</p>
+											<ul class="actions" style="text-align:center; margin-left:auto;margin-right:auto">
+												<li><a href="likes.php" class="button">Like</a></li>
 											</ul>
                                 </section>';
                             }
