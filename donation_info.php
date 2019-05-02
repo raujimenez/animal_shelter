@@ -87,8 +87,8 @@ include("src/initialization.php");
                                     $u_names = $conn->query("SELECT * from profile where PID=$new_pid;");
                                     $u_name = $u_names->fetch_assoc();
                                     $a_name = $a_names->fetch_assoc();
-                                    echo "<tr style=\"text-align:center;\"><td>" . $a_name['Name'] . "</td>";
-                                    echo "<td>" . $u_name['Fname'] . " " . $u_name['Minit'] . ". " . $u_name['Lname'] . "</td>";
+                                    echo "<tr style=\"text-align:center;\"><td>" . $u_name['Uname'] . "</td>";
+                                    echo "<td>" . $a_name['Name'] . "</td>";
                                     echo "<td>" . $donation_aid['D_date'] . "</td>";
                                     echo "<td>" . "\$" . number_format($donation_aid['Amount'], 2) . "</td></tr>";
                                 }
