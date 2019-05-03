@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case 'B':
             $is_noisy = $_POST['att1'];
             $w_span = $_POST['att2'];
-            $sql = "INSERT INTO bird (AID, is_Noisy, w_span) VALUES ($aid, $is_noisy, $w_span);";
+            $sql = "INSERT INTO bird (AID, isNoisy, w_span) VALUES ($aid, $is_noisy, $w_span);";
             break;
     }
     $conn = OpenCon();

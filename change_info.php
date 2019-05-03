@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case 'B':
             $is_noisy = $_POST['att1'];
             $w_span = $_POST['att2'];
-            $group_sql = "UPDATE bird SET w_span='$w_span', isNoisy=$isNoisy WHERE AID=$aid;";
+            $group_sql = "UPDATE bird SET w_span='$w_span', isNoisy=$is_noisy WHERE AID=$aid;";
             break;
     }
     $conn = OpenCon();
