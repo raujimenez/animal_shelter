@@ -1,9 +1,0 @@
-'Rex','D','M','Golden','Dry food',1,50.7,19.5,2012-07-01,1,1,'','Pit Bull Terrier',0
-'Bailey','D','F','Black','Dry food',1,60.3,22.3,2015-12-12,1,1,'','Labrador/Retriever',1
-'Toby','D','F','Black/Tan/Brown','Dry food',1,70.7,25.1,2017-07-22,1,1,'','German Shepherd',0
-'Rocky','D','M','White/Brown','Dry food',1,85.3,24.1,2016-11-27,1,1,'','American Bulldog',1
-'Duke','D,','M','Black, White/Cream','Dry food',1,41.3,20.2,2014-02-13,1,1,'','Border Collie Mix',0
-'Oliver','D','M','Gray/Blue/Silver','Dry food',1,140.8,27.2,2013-05-19,1,1,'','Neapolitan Mastiff',0  
-'Daisy','D','F','White/Silver/Brown',Dry food',1,65.1,21.2,2014-03-21,1,1,'','Australian Shepherd',0  
-	
-

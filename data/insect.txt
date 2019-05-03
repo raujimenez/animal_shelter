@@ -1,7 +1,0 @@
-'Steven', 'I', 'M','Green','small insects',1,'.2','.2','2019-03-12', 1, 0, 'Steven the praymantis is looking for a home', 'Pray mantis'
-'Charlotte', 'I','F','Black/Red', 'small insects',1, '.05','.5', '2018-12-03', 0, 0, 'Charlotte the black widow needs a home', 'B. Widow'
-'Franky', 'I', 'M', 'Green/Yellow', 'leafs and greens', 1,'.1', '1', '2019-04-20', 1, 0, "Franky the catepillar needs a home', 'S. Catter' 
-'Hannah', 'I', 'F', 'Red', 'Pollen', 1, '.02', '.3', '2019-04-23', 1, 0, 'Hannah is a sweet honey bee that could use a new home', 'H. Bee'
-'Johnny boy', 'I', 'M', 'Brown', 'small insects', 1, '.3', '1.5', '2019-03-12', 0, 0, "Johnny the scorpion needs a carring home', 'S. Scorp'
-'Buttuna', 'I', 'F', 'Orange', 'Leafs and greens', 1, '.05', '1', '2019-04-20', 1, 0, "Buttuna is a wonderful butterfly", 'K.Butter'
-'Stella', 'I', 'F', 'Pink', 'Dirt', 1, '.12', '3', '2018-12-25', 1, 0, "Stella calls earth her home, will you?", 'E. Worm'

@@ -1,7 +1,0 @@
-'Tamanna', 'F', 'F', 'Grey', 'other fish', 1, '120', '6', '2013-09-15', 0, 0, "Hammer Head shark that has 360 degree vision", "H. Shark"
-'Angel', 'F', 'M', 'Grey/White', 'other fish', 1, '170', '6', '2012-12-11', 0, 0, "King of the sea", "G.W. Shark" 
-'Angelina', 'F', 'F', 'Grey/White', 'other fish', 1, '143', '5.2', '2012-12-11', 0, 0, "Angel's Twin sister", "G.W. Shark" 
-'Julian', 'F', 'M', 'Gold', 'plankton', 1, '.2','.3','2019-04-23', 1, 0, "little brain power, high motor skills just like his twin sister", "Goldfish"
-'Juliana', 'F', 'F', 'Gold', 'plankton', 1, '.2','.3','2019-04-23', 1, 0, "little brain power, high motor skills", "Goldfish"
-'Solomon', 'F', 'M', 'Green', 'Plants', 1, '5', '1.3', '2018-12-11', 1, 0, "caught the trout now he's in doubt", "Salmon" 
-'Trevor', 'F', 'M', 'Grey', 'other fish', 1, '5', '.2', '2019-04-15', 0, 0, "Tamannas boy", "H. Shark"
